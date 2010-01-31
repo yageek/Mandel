@@ -39,7 +39,31 @@ void pause()
         }
     }
 }
+void affAxis(SDL_Surface * ecran){
 
+	SDL_Rect rect;
+	rect.w = 1;
+	rect.h = 1;
+	int i;
+	/*
+	 * Vertical AXIS
+	 */
+	rect.y = YORIGIN;
+	for(i=0;i< WIDTH;i++){
+		rect.x = i;
+		SDL_FillRect(ecran,&rect,SDL_MapRGB(ecran->format,255,0,0));
+	}
+	/*
+	 * HORIZONTAL AXIS
+	 */
+		rect.x = XORIGIN;
+	for(i=0;i < HEIGHT;i++){
+		rect.y = i;
+		SDL_FillRect(ecran,&rect,SDL_MapRGB(ecran->format,255,0,0));
+	}
+
+
+}
 
 int main(void) {
 	/*
@@ -71,7 +95,7 @@ int main(void) {
 		 /*
 		  * Scale Factor
 		  */
-		 factor = 100.0;
+		 factor = 200.0;
 		 for(i=0; i< WIDTH;i++){
 			 for(j=0;j< HEIGHT;j++){
 				 //Start with 0;
@@ -96,6 +120,7 @@ int main(void) {
 				 }
 			 }
 		 }
+		 //affAxis(ecran);
 		 SDL_Flip(ecran);
 		 pause();
 
