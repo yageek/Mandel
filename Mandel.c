@@ -115,7 +115,8 @@ int main(void) {
 				 rect.y = j;
 				 if(iter == MAX_ITER) SDL_FillRect(ecran,&rect,blackcolor);
 				 else{
-					 itercolor = SDL_MapRGB(ecran->format,0,0,255);
+
+					 itercolor = SDL_MapRGB(ecran->format,0,0,iter*30);
 					 SDL_FillRect(ecran,&rect,itercolor);
 				 }
 			 }
