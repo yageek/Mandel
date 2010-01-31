@@ -76,6 +76,7 @@ int main(void) {
 	    }
 
 		 ecran = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE);
+		 SDL_WM_SetCaption("Mandel v0.1",NULL);
 
 		 /*
 		  * SDL Color
