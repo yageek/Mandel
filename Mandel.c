@@ -18,6 +18,8 @@
 #define MAX_ITER 1000
 #define WIDTH 640
 #define HEIGHT 480
+#define XORIGIN WIDTH/2
+#define YORIGIN HEIGHT/2
 /*
  * Variables
  */
@@ -37,7 +39,6 @@ void pause()
         }
     }
 }
-
 
 
 int main(void) {
@@ -70,15 +71,15 @@ int main(void) {
 		 /*
 		  * Scale Factor
 		  */
-		 factor = 500.0;
+		 factor = 100.0;
 		 for(i=0; i< WIDTH;i++){
 			 for(j=0;j< HEIGHT;j++){
 				 //Start with 0;
 				 x=0;
 				 y=0;
 				 iter=0;
-				 xp = i/factor;
-				 yp = j/factor;
+				 xp = (i - XORIGIN)/factor;
+				 yp = (j - YORIGIN)/factor;
 				 while((x*x + y*y <= 4) && iter < MAX_ITER){
 					 xtemp = x*x - y*y +xp;
 					 y = 2*x*y + yp;
@@ -90,7 +91,7 @@ int main(void) {
 				 rect.y = j;
 				 if(iter == MAX_ITER) SDL_FillRect(ecran,&rect,blackcolor);
 				 else{
-					 itercolor = SDL_MapRGB(ecran->format,255,0,0);
+					 itercolor = SDL_MapRGB(ecran->format,0,0,255);
 					 SDL_FillRect(ecran,&rect,itercolor);
 				 }
 			 }
